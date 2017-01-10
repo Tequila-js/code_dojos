@@ -1,0 +1,13 @@
+$factor-alteration-colors: 20%;
+
+$blue: #00B5D1;
+$darken-blue: darken($blue, $factor-alteration-colors);
+$darken-blue: lighten($blue, $factor-alteration-colors);
+$green: #7F993A;
+$darken-green: darken($green, $factor-alteration-colors);
+$darken-green: lighten($green, $factor-alteration-colors);
+$gray: #666;
+
+$font-base-size: 16px;
+$font-size: 1rem;
+$font-family: 'Open Sans', sans-serif;
