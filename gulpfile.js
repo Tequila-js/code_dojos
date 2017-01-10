@@ -1,21 +1,17 @@
 'use strict';
 
-var argv = require('yargs').argv;
-
-const gulp = require('gulp'),
+const argv = require('yargs').argv,
+      gulp = require('gulp'),
       sass = require('gulp-sass'),
       gulpIf = require('gulp-if'),
       plumber = require('gulp-plumber'),
       webpack = require('gulp-webpack'),
       webserver = require('gulp-webserver'),
-      livereload = require('gulp-livereload');
-
-gulp.task('open-dev-server', function () {
-
-});
+      livereload = require('gulp-livereload'),
+      runSequence = require('gulp-run-sequence');
 
 gulp.task('watch-html', function () {
-  gulp.src('./dist/index.html')
+  gulp.src('./docs/*.html')
       .pipe(gulpIf(argv.env === 'dev', livereload()));
 });
 
@@ -25,7 +21,7 @@ gulp.task('process-js', function () {
             .pipe(webpack( require('./webpack.config.js') ))
             .pipe(gulp.dest('./docs'))
             .pipe(gulpIf(argv.env === 'dev', livereload()));
-})
+});
 
 gulp.task('process-sass', function () {
   return gulp.src('./app/scss/main.scss')
@@ -48,7 +44,7 @@ gulp.task('watch', function () {
       open: true
     }));
 
-  gulp.watch(['./dist/index.html'], ['watch-html']);
+  gulp.watch(['./docs/*.html'], ['watch-html']);
   gulp.watch(['./app/scss/*.scss', './app/scss/**/*.scss'], ['process-sass']);
   gulp.watch(['./app/js/*.js', './app/js/**/*.js'], ['process-js']);
 });

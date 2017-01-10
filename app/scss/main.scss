@@ -1,3 +1,98 @@
-body {
-  background: black;
+@import 'settings/vars';
+@import '../../node_modules/normalize-scss/sass/normalize';
+
+@include normalize();
+
+*:focus {
+  outline: 0;
+}
+
+html {
+  font-size: $font-base-size;
+  color: $gray;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+}
+
+h3 {
+  font-size: 1.7rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+
+h6 {
+  font-size: 1.15rem;
+}
+
+a {
+  color: $blue;
+  transition: $time-transition color ease;
+  text-decoration: none;
+  &:hover,
+  &:focus {
+    color: $darken-blue;
+  }
+  &:active {
+    color: $lighten-blue;
+  }
+}
+
+.button {
+  border: 0;
+  font-size: 1rem;
+  padding: .45rem .8rem;
+  transition: $time-transition box-shadow ease, $time-transition background ease;
+  color: white;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow:  0 0 .4rem black;
+  }
+
+  &.button-blue {
+    background-color: $blue;
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: $darken-blue;
+    }
+  }
+  &.button-green {
+    background-color: $green;
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: $darken-green;
+    }
+  }
+}
+
+.common-list {
+  list-style: none;
+  .common-list-item {
+    position: relative;
+    &:before {
+      content: ' ';
+      display: block;
+      position: absolute;
+      border-radius: 50%;
+      height: .25rem;
+      width: .25rem;
+      top: .4rem;
+      left: -.5rem;
+      background-color: $blue;
+    }
+  }
 }
