@@ -449,6 +449,24 @@ a {
   a:active {
     color: #38e4ff; }
 
+.button {
+  border: 0;
+  font-size: 1rem;
+  padding: .45rem .8rem;
+  transition: 0.5s box-shadow ease, 0.5s background ease;
+  color: white;
+  cursor: pointer; }
+  .button:hover {
+    box-shadow: 0 0 .4rem black; }
+  .button.button-blue {
+    background-color: #00B5D1; }
+    .button.button-blue:hover, .button.button-blue:focus, .button.button-blue:active {
+      background-color: #005d6b; }
+  .button.button-green {
+    background-color: #7F993A; }
+    .button.button-green:hover, .button.button-green:focus, .button.button-green:active {
+      background-color: #424f1e; }
+
 .common-list {
   list-style: none; }
   .common-list .common-list-item {
@@ -461,5 +479,5 @@ a {
       height: .25rem;
       width: .25rem;
       top: .4rem;
-      left: -.3rem;
+      left: -.5rem;
       background-color: #00B5D1; }

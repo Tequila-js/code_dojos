@@ -49,6 +49,36 @@ a {
   }
 }
 
+.button {
+  border: 0;
+  font-size: 1rem;
+  padding: .45rem .8rem;
+  transition: $time-transition box-shadow ease, $time-transition background ease;
+  color: white;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow:  0 0 .4rem black;
+  }
+
+  &.button-blue {
+    background-color: $blue;
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: $darken-blue;
+    }
+  }
+  &.button-green {
+    background-color: $green;
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: $darken-green;
+    }
+  }
+}
+
 .common-list {
   list-style: none;
   .common-list-item {
@@ -61,7 +91,7 @@ a {
       height: .25rem;
       width: .25rem;
       top: .4rem;
-      left: -.3rem;
+      left: -.5rem;
       background-color: $blue;
     }
   }
