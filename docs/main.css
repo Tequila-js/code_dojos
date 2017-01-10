@@ -415,5 +415,27 @@ template {
 [hidden] {
   display: none; }
 
+*:focus {
+  outline: 0; }
+
 html {
-  font-size: 16px; }
+  font-size: 16px;
+  color: #333; }
+
+h1 {
+  font-size: 2rem; }
+
+h2 {
+  font-size: 1.8rem; }
+
+h3 {
+  font-size: 1.7rem; }
+
+h4 {
+  font-size: 1.5rem; }
+
+h5 {
+  font-size: 1.25rem; }
+
+h6 {
+  font-size: 1.15rem; }
