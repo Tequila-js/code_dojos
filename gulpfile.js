@@ -23,7 +23,7 @@ gulp.task('process-js', function () {
   return gulp.src('app/js/main.js')
             .pipe(plumber())
             .pipe(webpack( require('./webpack.config.js') ))
-            .pipe(gulp.dest('./dist'))
+            .pipe(gulp.dest('./docs'))
             .pipe(gulpIf(argv.env === 'dev', livereload()));
 })
 
@@ -34,14 +34,14 @@ gulp.task('process-sass', function () {
                 style: "nested",
                 noCache: true
               }))
-              .pipe(gulp.dest('./dist/'))
+              .pipe(gulp.dest('./docs/'))
               .pipe(gulpIf(argv.env === 'dev', livereload()));
 });
 
 gulp.task('watch', function () {
   livereload.listen();
 
-  gulp.src('./dist')
+  gulp.src('./docs')
     .pipe(webserver({
       livereload: false,
       directoryListing: false,
