@@ -11,7 +11,7 @@ const argv = require('yargs').argv,
       runSequence = require('gulp-run-sequence');
 
 gulp.task('watch-html', function () {
-  gulp.src('./dist/index.html')
+  gulp.src('./docs/*.html')
       .pipe(gulpIf(argv.env === 'dev', livereload()));
 });
 
