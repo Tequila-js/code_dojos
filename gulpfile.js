@@ -44,7 +44,7 @@ gulp.task('watch', function () {
       open: true
     }));
 
-  gulp.watch(['./dist/index.html'], ['watch-html']);
+  gulp.watch(['./docs/*.html'], ['watch-html']);
   gulp.watch(['./app/scss/*.scss', './app/scss/**/*.scss'], ['process-sass']);
   gulp.watch(['./app/js/*.js', './app/js/**/*.js'], ['process-js']);
 });
