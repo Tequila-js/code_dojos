@@ -35,3 +35,34 @@ h5 {
 h6 {
   font-size: 1.15rem;
 }
+
+a {
+  color: $blue;
+  transition: $time-transition color ease;
+  text-decoration: none;
+  &:hover,
+  &:focus {
+    color: $darken-blue;
+  }
+  &:active {
+    color: $lighten-blue;
+  }
+}
+
+.common-list {
+  list-style: none;
+  .common-list-item {
+    position: relative;
+    &:before {
+      content: ' ';
+      display: block;
+      position: absolute;
+      border-radius: 50%;
+      height: .25rem;
+      width: .25rem;
+      top: .4rem;
+      left: -.3rem;
+      background-color: $blue;
+    }
+  }
+}

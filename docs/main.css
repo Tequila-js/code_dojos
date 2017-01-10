@@ -439,3 +439,27 @@ h5 {
 
 h6 {
   font-size: 1.15rem; }
+
+a {
+  color: #00B5D1;
+  transition: 0.5s color ease;
+  text-decoration: none; }
+  a:hover, a:focus {
+    color: #005d6b; }
+  a:active {
+    color: #38e4ff; }
+
+.common-list {
+  list-style: none; }
+  .common-list .common-list-item {
+    position: relative; }
+    .common-list .common-list-item:before {
+      content: ' ';
+      display: block;
+      position: absolute;
+      border-radius: 50%;
+      height: .25rem;
+      width: .25rem;
+      top: .4rem;
+      left: -.3rem;
+      background-color: #00B5D1; }
