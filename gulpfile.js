@@ -7,8 +7,7 @@ const argv = require('yargs').argv,
       plumber = require('gulp-plumber'),
       webpack = require('gulp-webpack'),
       webserver = require('gulp-webserver'),
-      livereload = require('gulp-livereload'),
-      runSequence = require('gulp-run-sequence');
+      livereload = require('gulp-livereload');
 
 gulp.task('watch-html', function () {
   gulp.src('./docs/*.html')
