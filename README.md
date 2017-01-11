@@ -19,3 +19,9 @@
 
 # Recommendations
 - Install [livereload](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei) for development, ensure it's active when you're developing.
+
+# Notes
+- Each time you run `npm install` it will excecute `postinstall` command and will generate assets for the app.
+
+# Technologies
+- [Node v6.9.1](https://nodejs.org)
