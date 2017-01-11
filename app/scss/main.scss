@@ -1,7 +1,8 @@
 @import 'settings/vars';
 @import '../../node_modules/normalize-scss/sass/normalize';
-
 @include normalize();
+
+@import 'components/navigation';
 
 *:focus {
   outline: 0;
