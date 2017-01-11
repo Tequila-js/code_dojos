@@ -1,5 +1,6 @@
 $factor-alteration-colors: 20%;
 $time-transition: .5s;
+$padding: 1rem;
 
 $blue: #00B5D1;
 $darken-blue: darken($blue, $factor-alteration-colors);
@@ -8,6 +9,7 @@ $green: #7F993A;
 $darken-green: darken($green, $factor-alteration-colors);
 $lighten-green: lighten($green, $factor-alteration-colors);
 $gray: #333;
+$lighten-gray: lighten($gray, $factor-alteration-colors);
 
 $font-base-size: 16px;
 $font-size: 1rem;
