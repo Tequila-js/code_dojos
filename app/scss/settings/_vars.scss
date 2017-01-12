@@ -10,6 +10,7 @@ $darken-green: darken($green, $factor-alteration-colors);
 $lighten-green: lighten($green, $factor-alteration-colors);
 $gray: #333;
 $lighten-gray: lighten($gray, $factor-alteration-colors);
+$background-transparency: rgba(0, 0, 0, .5);
 
 $font-base-size: 16px;
 $font-size: 1rem;
