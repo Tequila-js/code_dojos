@@ -24,7 +24,7 @@ class Member extends React.Component {
                   <span className="member-name">{props.name}</span>
                   <br/>
                   <br/>
-                  <a href={props.url} className="button button-green">Check profile</a>
+                  <a target='_blank' href={props.url} className="button button-green">Check profile</a>
                 </p>
               </div>
             </div>)

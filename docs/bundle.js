@@ -23281,7 +23281,7 @@
 	            _react2.default.createElement('br', null),
 	            _react2.default.createElement(
 	              'a',
-	              { href: props.url, className: 'button button-green' },
+	              { target: '_blank', href: props.url, className: 'button button-green' },
 	              'Check profile'
 	            )
 	          )
