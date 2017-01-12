@@ -3,6 +3,10 @@
 @include normalize();
 
 @import 'components/navigation';
+@import 'components/loader';
+@import 'settings/animations';
+
+
 
 *:focus {
   outline: 0;
