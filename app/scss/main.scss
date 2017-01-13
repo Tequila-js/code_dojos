@@ -1,7 +1,17 @@
 @import 'settings/vars';
 @import '../../node_modules/normalize-scss/sass/normalize';
-
 @include normalize();
+
+@import 'components/navigation';
+@import 'components/loader';
+@import 'settings/animations';
+
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
 
 *:focus {
   outline: 0;
@@ -49,6 +59,14 @@ a {
   }
 }
 
+.wrap-container {
+  max-width: 75rem;
+
+  @media(min-width: 75.06rem) {
+    margin: auto;
+  }
+}
+
 .button {
   border: 0;
   font-size: 1rem;
@@ -66,6 +84,7 @@ a {
     &:hover,
     &:focus,
     &:active {
+      color: white;
       background-color: $darken-blue;
     }
   }
@@ -74,6 +93,7 @@ a {
     &:hover,
     &:focus,
     &:active {
+      color: white;
       background-color: $darken-green;
     }
   }
@@ -94,5 +114,15 @@ a {
       left: -.5rem;
       background-color: $blue;
     }
+  }
+}
+
+.list-unstyled {
+  list-style: none;
+  padding: 0;
+  li {
+    display: inline-block;
+    height: 300px;
+    width: 300px;
   }
 }
