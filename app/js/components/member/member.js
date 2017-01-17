@@ -5,8 +5,8 @@ import React from 'react';
 require('./member.scss');
 
 class Member extends React.Component {
-  constructor() {
-    super();
+  constructor(...props) {
+    super(...props);
   }
 
   render() {
@@ -29,6 +29,12 @@ class Member extends React.Component {
               </div>
             </div>)
   }
+}
+
+Member.propTypes = {
+  name: React.PropTypes.string.isRequired,
+  url: React.PropTypes.string.isRequired,
+  avatar: React.PropTypes.string
 }
 
 export default Member;

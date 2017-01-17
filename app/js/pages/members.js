@@ -3,7 +3,7 @@
 import React from 'react';
 import Axios from 'axios';
 
-import Loader from '../components/loader.js';
+import Loader from '../components/loader/loader.js';
 import Member from '../components/member/member.js';
 
 const tequilaTeamMembers = 'https://api.github.com/orgs/Tequila-js/members';
