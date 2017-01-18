@@ -35,17 +35,17 @@
     "gulp-webpack": "^1.5.0",
     "gulp-webserver": "^0.9.1",
     "ignore-styles": "^5.0.1",
-    "istanbul": "^0.4.5",
     "jsdom": "^9.9.1",
     "mocha": "^3.2.0",
-    "node-sass": "^4.2.0",
+    "node-sass": "^4.3.0",
+    "nyc": "^10.0.0",
     "sass-loader": "^4.1.1",
     "style-loader": "^0.13.1",
     "webpack": "^1.14.0",
     "yargs": "^6.6.0"
   },
   "scripts": {
-    "test": "istanbul cover node_modules/mocha/bin/mocha -- --compilers js:babel-core/register --recursive --require ignore-styles --require test/index.js app/js/**/*.test-enzyme.js",
+    "test": "node ./node_modules/nyc/bin/nyc.js --require babel-core/register ./node_modules/.bin/mocha --compilers js:babel-core/register --recursive --require ignore-styles --require test/index.js app/js/**/*.test-enzyme.js",
     "dev": "gulp watch --env=dev"
   },
   "repository": {
