@@ -4,9 +4,9 @@ import React from 'react';
 
 require('./member.scss');
 
-class Member extends React.Component {
-  constructor() {
-    super();
+export default class Member extends React.Component {
+  constructor(props) {
+    super(props);
   }
 
   render() {
@@ -22,8 +22,8 @@ class Member extends React.Component {
               <div className="member-panel">
                 <p>
                   <span className="member-name">{props.name}</span>
-                  <br/>
-                  <br/>
+                </p>
+                <p>
                   <a target='_blank' href={props.url} className="button button-green">Check profile</a>
                 </p>
               </div>
@@ -31,4 +31,8 @@ class Member extends React.Component {
   }
 }
 
-export default Member;
+Member.propTypes = {
+  name: React.PropTypes.string.isRequired,
+  url: React.PropTypes.string.isRequired,
+  avatar: React.PropTypes.string
+}
