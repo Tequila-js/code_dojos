@@ -3,7 +3,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Members from './pages/members.js';
+import Members from './Scenario/Members';
 
 {
   let membersContainer = document.getElementById('members-container');
