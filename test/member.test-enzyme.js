@@ -2,8 +2,7 @@ import React from 'react';
 import {render, shallow, mount} from 'enzyme';
 import {expect} from 'chai';
 
-import Member from './member'
-
+import Member from '../app/js/Component/Member';
 
 describe('Member component caracteristics', () => {
   it('Using Marco as name parameter', () => {

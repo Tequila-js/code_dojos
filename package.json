@@ -45,7 +45,7 @@
     "yargs": "^6.6.0"
   },
   "scripts": {
-    "test": "node ./node_modules/nyc/bin/nyc.js --require babel-core/register ./node_modules/.bin/mocha --compilers js:babel-core/register --recursive --require ignore-styles --require test/index.js app/js/**/*.test-enzyme.js",
+    "test": "node ./node_modules/nyc/bin/nyc.js --require babel-core/register ./node_modules/.bin/mocha --compilers js:babel-core/register --recursive --require ignore-styles --require test/index.js ./test/*.test-enzyme.js",
     "dev": "gulp watch --env=dev"
   },
   "repository": {

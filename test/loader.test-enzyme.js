@@ -2,7 +2,7 @@ import React from 'react';
 import {render, shallow} from 'enzyme';
 import {expect} from 'chai';
 
-import Loader from './loader';
+import Loader from '../app/js/Component/loader';
 
 describe('Loader component caracteristics', () => {
   it('It shouldn\'t render text', () => {
