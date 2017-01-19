@@ -1,9 +1,12 @@
+'use strict';
+
 import React from 'react'
-import Loader from '../components/loader';
-import Kata from '../components/Kata/Kata';
 import Axios from 'axios';
 
-class Katas extends React.Component {
+import Loader from '../../Component/Loader';
+import Kata from '../../Component/Kata/';
+
+export default class Katas extends React.Component {
   constructor(props) {
     super(props);
     this.state = {katas: '', name: ''}
@@ -33,5 +36,3 @@ class Katas extends React.Component {
     )
   }
 }
-
-export default Katas;
