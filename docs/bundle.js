@@ -54,9 +54,9 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _members = __webpack_require__(179);
+	var _Members = __webpack_require__(179);
 
-	var _members2 = _interopRequireDefault(_members);
+	var _Members2 = _interopRequireDefault(_Members);
 
 	var _Katas = __webpack_require__(211);
 
@@ -69,7 +69,7 @@
 	  var katasContainer = document.getElementById('katas-container');
 
 	  if (membersContainer) {
-	    _reactDom2.default.render(_react2.default.createElement(_members2.default, null), membersContainer);
+	    _reactDom2.default.render(_react2.default.createElement(_Members2.default, null), membersContainer);
 	  }
 	  if (katasContainer) {
 	    _reactDom2.default.render(_react2.default.createElement(_Katas2.default, null), katasContainer);
@@ -21626,13 +21626,13 @@
 
 	var _axios2 = _interopRequireDefault(_axios);
 
-	var _loader = __webpack_require__(205);
+	var _Loader = __webpack_require__(205);
 
-	var _loader2 = _interopRequireDefault(_loader);
+	var _Loader2 = _interopRequireDefault(_Loader);
 
-	var _member = __webpack_require__(206);
+	var _Member = __webpack_require__(206);
 
-	var _member2 = _interopRequireDefault(_member);
+	var _Member2 = _interopRequireDefault(_Member);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -21680,7 +21680,7 @@
 	          null,
 	          'Coding Dojo Members'
 	        ),
-	        this.state.members.length ? this.returnMembers() : _react2.default.createElement(_loader2.default, null)
+	        this.state.members.length ? this.returnMembers() : _react2.default.createElement(_Loader2.default, null)
 	      );
 	    }
 	  }, {
@@ -21693,7 +21693,7 @@
 	          return _react2.default.createElement(
 	            'li',
 	            { key: index },
-	            _react2.default.createElement(_member2.default, { name: item.login, url: item.html_url, avatar: item.avatar_url })
+	            _react2.default.createElement(_Member2.default, { name: item.login, url: item.html_url, avatar: item.avatar_url })
 	          );
 	        })
 	      );
@@ -23224,7 +23224,7 @@
 	  function Loader() {
 	    _classCallCheck(this, Loader);
 
-	    return _possibleConstructorReturn(this, (Loader.__proto__ || Object.getPrototypeOf(Loader)).call(this));
+	    return _possibleConstructorReturn(this, (Loader.__proto__ || Object.getPrototypeOf(Loader)).apply(this, arguments));
 	  }
 
 	  _createClass(Loader, [{
@@ -23268,10 +23268,10 @@
 	var Member = function (_React$Component) {
 	  _inherits(Member, _React$Component);
 
-	  function Member() {
+	  function Member(props) {
 	    _classCallCheck(this, Member);
 
-	    return _possibleConstructorReturn(this, (Member.__proto__ || Object.getPrototypeOf(Member)).call(this));
+	    return _possibleConstructorReturn(this, (Member.__proto__ || Object.getPrototypeOf(Member)).call(this, props));
 	  }
 
 	  _createClass(Member, [{
@@ -23298,9 +23298,11 @@
 	              'span',
 	              { className: 'member-name' },
 	              props.name
-	            ),
-	            _react2.default.createElement('br', null),
-	            _react2.default.createElement('br', null),
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            null,
 	            _react2.default.createElement(
 	              'a',
 	              { target: '_blank', href: props.url, className: 'button button-green' },
@@ -23316,6 +23318,13 @@
 	}(_react2.default.Component);
 
 	exports.default = Member;
+
+
+	Member.propTypes = {
+	  name: _react2.default.PropTypes.string.isRequired,
+	  url: _react2.default.PropTypes.string.isRequired,
+	  avatar: _react2.default.PropTypes.string
+	};
 
 /***/ },
 /* 207 */
@@ -23681,17 +23690,17 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _loader = __webpack_require__(205);
+	var _axios = __webpack_require__(180);
 
-	var _loader2 = _interopRequireDefault(_loader);
+	var _axios2 = _interopRequireDefault(_axios);
+
+	var _Loader = __webpack_require__(205);
+
+	var _Loader2 = _interopRequireDefault(_Loader);
 
 	var _Kata = __webpack_require__(212);
 
 	var _Kata2 = _interopRequireDefault(_Kata);
-
-	var _axios = __webpack_require__(180);
-
-	var _axios2 = _interopRequireDefault(_axios);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -23744,7 +23753,7 @@
 	          null,
 	          'Katas'
 	        ),
-	        this.state.katas.length ? this.state.katas : _react2.default.createElement(_loader2.default, null)
+	        this.state.katas.length ? this.state.katas : _react2.default.createElement(_Loader2.default, null)
 	      );
 	    }
 	  }]);

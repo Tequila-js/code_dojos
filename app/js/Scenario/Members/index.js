@@ -3,12 +3,12 @@
 import React from 'react';
 import Axios from 'axios';
 
-import Loader from '../components/loader.js';
-import Member from '../components/member/member.js';
+import Loader from '../../Component/Loader';
+import Member from '../../component/Member';
 
 const tequilaTeamMembers = 'https://api.github.com/orgs/Tequila-js/members';
 
-class Members extends React.Component {
+export default class Members extends React.Component {
 
   constructor() {
     super();
@@ -36,12 +36,12 @@ class Members extends React.Component {
 
   returnMembers() {
     return (<ul className="list-unstyled">
-                {this.state.members.map((item, index) => (<li key={index}>
+              {
+                this.state.members.map((item, index) => (<li key={index}>
                                                               <Member name={item.login} url={item.html_url} avatar={item.avatar_url}/>
-                                                          </li>))}
+                                                          </li>))
+              }
             </ul>)
   }
 
 }
-
-export default Members;
