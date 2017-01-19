@@ -58,13 +58,21 @@
 
 	var _members2 = _interopRequireDefault(_members);
 
+	var _Katas = __webpack_require__(211);
+
+	var _Katas2 = _interopRequireDefault(_Katas);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	{
 	  var membersContainer = document.getElementById('members-container');
+	  var katasContainer = document.getElementById('katas-container');
 
 	  if (membersContainer) {
 	    _reactDom2.default.render(_react2.default.createElement(_members2.default, null), membersContainer);
+	  }
+	  if (katasContainer) {
+	    _reactDom2.default.render(_react2.default.createElement(_Katas2.default, null), katasContainer);
 	  }
 	}
 
@@ -361,8 +369,15 @@
 /* 4 */
 /***/ function(module, exports) {
 
+	/*
+	object-assign
+	(c) Sindre Sorhus
+	@license MIT
+	*/
+
 	'use strict';
 	/* eslint-disable no-unused-vars */
+	var getOwnPropertySymbols = Object.getOwnPropertySymbols;
 	var hasOwnProperty = Object.prototype.hasOwnProperty;
 	var propIsEnumerable = Object.prototype.propertyIsEnumerable;
 
@@ -383,7 +398,7 @@
 			// Detect buggy property enumeration order in older V8 versions.
 
 			// https://bugs.chromium.org/p/v8/issues/detail?id=4118
-			var test1 = new String('abc');  // eslint-disable-line
+			var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
 			test1[5] = 'de';
 			if (Object.getOwnPropertyNames(test1)[0] === '5') {
 				return false;
@@ -412,7 +427,7 @@
 			}
 
 			return true;
-		} catch (e) {
+		} catch (err) {
 			// We don't expect any of the above to throw, but better to be safe.
 			return false;
 		}
@@ -432,8 +447,8 @@
 				}
 			}
 
-			if (Object.getOwnPropertySymbols) {
-				symbols = Object.getOwnPropertySymbols(from);
+			if (getOwnPropertySymbols) {
+				symbols = getOwnPropertySymbols(from);
 				for (var i = 0; i < symbols.length; i++) {
 					if (propIsEnumerable.call(from, symbols[i])) {
 						to[symbols[i]] = from[symbols[i]];
@@ -6513,8 +6528,15 @@
 /* 50 */
 /***/ function(module, exports) {
 
+	/*
+	object-assign
+	(c) Sindre Sorhus
+	@license MIT
+	*/
+
 	'use strict';
 	/* eslint-disable no-unused-vars */
+	var getOwnPropertySymbols = Object.getOwnPropertySymbols;
 	var hasOwnProperty = Object.prototype.hasOwnProperty;
 	var propIsEnumerable = Object.prototype.propertyIsEnumerable;
 
@@ -6535,7 +6557,7 @@
 			// Detect buggy property enumeration order in older V8 versions.
 
 			// https://bugs.chromium.org/p/v8/issues/detail?id=4118
-			var test1 = new String('abc');  // eslint-disable-line
+			var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
 			test1[5] = 'de';
 			if (Object.getOwnPropertyNames(test1)[0] === '5') {
 				return false;
@@ -6564,7 +6586,7 @@
 			}
 
 			return true;
-		} catch (e) {
+		} catch (err) {
 			// We don't expect any of the above to throw, but better to be safe.
 			return false;
 		}
@@ -6584,8 +6606,8 @@
 				}
 			}
 
-			if (Object.getOwnPropertySymbols) {
-				symbols = Object.getOwnPropertySymbols(from);
+			if (getOwnPropertySymbols) {
+				symbols = getOwnPropertySymbols(from);
 				for (var i = 0; i < symbols.length; i++) {
 					if (propIsEnumerable.call(from, symbols[i])) {
 						to[symbols[i]] = from[symbols[i]];
@@ -23642,6 +23664,140 @@
 			URL.revokeObjectURL(oldSrc);
 	}
 
+
+/***/ },
+/* 211 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _loader = __webpack_require__(205);
+
+	var _loader2 = _interopRequireDefault(_loader);
+
+	var _Kata = __webpack_require__(212);
+
+	var _Kata2 = _interopRequireDefault(_Kata);
+
+	var _axios = __webpack_require__(180);
+
+	var _axios2 = _interopRequireDefault(_axios);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Katas = function (_React$Component) {
+	  _inherits(Katas, _React$Component);
+
+	  function Katas(props) {
+	    _classCallCheck(this, Katas);
+
+	    var _this = _possibleConstructorReturn(this, (Katas.__proto__ || Object.getPrototypeOf(Katas)).call(this, props));
+
+	    _this.state = { katas: '', name: '' };
+	    return _this;
+	  }
+
+	  _createClass(Katas, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      this.getListOfKatas();
+	    }
+	  }, {
+	    key: 'getListOfKatas',
+	    value: function getListOfKatas() {
+	      var _this2 = this;
+
+	      _axios2.default.get('https://api.github.com/orgs/Tequila-js/repos').then(function (response) {
+	        var katas = response.data.filter(function (kata) {
+	          return kata.name.includes('kata-');
+	        }).map(function (kata) {
+	          return _react2.default.createElement(_Kata2.default, { kata: kata, key: kata.id });
+	        });
+
+	        _this2.setState({ katas: katas });
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'section',
+	        null,
+	        _react2.default.createElement(
+	          'h1',
+	          null,
+	          'Katas'
+	        ),
+	        this.state.katas.length ? this.state.katas : _react2.default.createElement(_loader2.default, null)
+	      );
+	    }
+	  }]);
+
+	  return Katas;
+	}(_react2.default.Component);
+
+	exports.default = Katas;
+
+/***/ },
+/* 212 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var kataItem = {
+	  background: '#fff',
+	  border: '0.1rem solid #eee',
+	  color: '#999',
+	  display: 'inline-block',
+	  padding: '1rem',
+	  margin: '0.5rem',
+	  width: '20%'
+	};
+
+	function Kata(props) {
+	  return _react2.default.createElement(
+	    'li',
+	    { style: kataItem },
+	    _react2.default.createElement(
+	      'a',
+	      { href: props.kata.html_url },
+	      props.kata.name
+	    ),
+	    _react2.default.createElement(
+	      'p',
+	      null,
+	      props.kata.description
+	    )
+	  );
+	}
+
+	exports.default = Kata;
 
 /***/ }
 /******/ ]);
