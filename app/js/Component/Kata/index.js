@@ -13,8 +13,7 @@ const kataItem = {
 function Kata(props) {
   return (
     <li style={kataItem}>
-      <a href={props.kata.html_url}>{props.kata.name}</a>
-      <p>{props.kata.description}</p>
+      <a href={`detail.html?name=${props.kata.name}`}>{props.kata.name}</a>
     </li>
   )
 }
