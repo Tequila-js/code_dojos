@@ -62,17 +62,26 @@
 
 	var _Katas2 = _interopRequireDefault(_Katas);
 
+	var _Details = __webpack_require__(213);
+
+	var _Details2 = _interopRequireDefault(_Details);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	{
 	  var membersContainer = document.getElementById('members-container');
 	  var katasContainer = document.getElementById('katas-container');
+	  var detailContainer = document.getElementById('detail-container');
 
 	  if (membersContainer) {
 	    _reactDom2.default.render(_react2.default.createElement(_Members2.default, null), membersContainer);
 	  }
 	  if (katasContainer) {
 	    _reactDom2.default.render(_react2.default.createElement(_Katas2.default, null), katasContainer);
+	  }
+
+	  if (detailContainer) {
+	    _reactDom2.default.render(_react2.default.createElement(_Details2.default, null), detailContainer);
 	  }
 	}
 
@@ -369,15 +378,8 @@
 /* 4 */
 /***/ function(module, exports) {
 
-	/*
-	object-assign
-	(c) Sindre Sorhus
-	@license MIT
-	*/
-
 	'use strict';
 	/* eslint-disable no-unused-vars */
-	var getOwnPropertySymbols = Object.getOwnPropertySymbols;
 	var hasOwnProperty = Object.prototype.hasOwnProperty;
 	var propIsEnumerable = Object.prototype.propertyIsEnumerable;
 
@@ -398,7 +400,7 @@
 			// Detect buggy property enumeration order in older V8 versions.
 
 			// https://bugs.chromium.org/p/v8/issues/detail?id=4118
-			var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
+			var test1 = new String('abc');  // eslint-disable-line
 			test1[5] = 'de';
 			if (Object.getOwnPropertyNames(test1)[0] === '5') {
 				return false;
@@ -427,7 +429,7 @@
 			}
 
 			return true;
-		} catch (err) {
+		} catch (e) {
 			// We don't expect any of the above to throw, but better to be safe.
 			return false;
 		}
@@ -447,8 +449,8 @@
 				}
 			}
 
-			if (getOwnPropertySymbols) {
-				symbols = getOwnPropertySymbols(from);
+			if (Object.getOwnPropertySymbols) {
+				symbols = Object.getOwnPropertySymbols(from);
 				for (var i = 0; i < symbols.length; i++) {
 					if (propIsEnumerable.call(from, symbols[i])) {
 						to[symbols[i]] = from[symbols[i]];
@@ -6528,15 +6530,8 @@
 /* 50 */
 /***/ function(module, exports) {
 
-	/*
-	object-assign
-	(c) Sindre Sorhus
-	@license MIT
-	*/
-
 	'use strict';
 	/* eslint-disable no-unused-vars */
-	var getOwnPropertySymbols = Object.getOwnPropertySymbols;
 	var hasOwnProperty = Object.prototype.hasOwnProperty;
 	var propIsEnumerable = Object.prototype.propertyIsEnumerable;
 
@@ -6557,7 +6552,7 @@
 			// Detect buggy property enumeration order in older V8 versions.
 
 			// https://bugs.chromium.org/p/v8/issues/detail?id=4118
-			var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
+			var test1 = new String('abc');  // eslint-disable-line
 			test1[5] = 'de';
 			if (Object.getOwnPropertyNames(test1)[0] === '5') {
 				return false;
@@ -6586,7 +6581,7 @@
 			}
 
 			return true;
-		} catch (err) {
+		} catch (e) {
 			// We don't expect any of the above to throw, but better to be safe.
 			return false;
 		}
@@ -6606,8 +6601,8 @@
 				}
 			}
 
-			if (getOwnPropertySymbols) {
-				symbols = getOwnPropertySymbols(from);
+			if (Object.getOwnPropertySymbols) {
+				symbols = Object.getOwnPropertySymbols(from);
 				for (var i = 0; i < symbols.length; i++) {
 					if (propIsEnumerable.call(from, symbols[i])) {
 						to[symbols[i]] = from[symbols[i]];
@@ -23795,18 +23790,182 @@
 	    { style: kataItem },
 	    _react2.default.createElement(
 	      'a',
-	      { href: props.kata.html_url },
+	      { href: 'detail.html?name=' + props.kata.name },
 	      props.kata.name
-	    ),
-	    _react2.default.createElement(
-	      'p',
-	      null,
-	      props.kata.description
 	    )
 	  );
 	}
 
 	exports.default = Kata;
+
+/***/ },
+/* 213 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _axios = __webpack_require__(180);
+
+	var _axios2 = _interopRequireDefault(_axios);
+
+	var _Loader = __webpack_require__(205);
+
+	var _Loader2 = _interopRequireDefault(_Loader);
+
+	var _Detail = __webpack_require__(214);
+
+	var _Detail2 = _interopRequireDefault(_Detail);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var kataElementStyle = {
+	  background: '#fff',
+	  padding: '1rem',
+	  margin: 'auto',
+	  width: '80%'
+	};
+
+	var Details = function (_React$Component) {
+	  _inherits(Details, _React$Component);
+
+	  function Details(props) {
+	    _classCallCheck(this, Details);
+
+	    var _this = _possibleConstructorReturn(this, (Details.__proto__ || Object.getPrototypeOf(Details)).call(this, props));
+
+	    _this.state = { kataList: '' };
+	    return _this;
+	  }
+
+	  _createClass(Details, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var _this2 = this;
+
+	      location.search.replace('?', '').split('&').forEach(function (item) {
+	        var tempArray = item.split('='),
+	            _ref = [tempArray[0], tempArray[1]],
+	            name = _ref[0],
+	            value = _ref[1];
+
+
+	        if (name === 'name' && value) {
+	          _this2.getKataDetail(value);
+	        }
+	      });
+	    }
+	  }, {
+	    key: 'getKataDetail',
+	    value: function getKataDetail() {
+	      var _this3 = this;
+
+	      var nameKata = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+
+	      _axios2.default.get('https://api.github.com/orgs/Tequila-js/repos').then(function (response) {
+	        var katas = response.data.filter(function (kata) {
+	          return kata.name == nameKata;
+	        });
+
+	        _this3.setState({ kataList: katas });
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'section',
+	        null,
+	        _react2.default.createElement(
+	          'div',
+	          { style: kataElementStyle },
+	          _react2.default.createElement(
+	            'h1',
+	            null,
+	            'Details'
+	          )
+	        ),
+	        this.state.kataList.length ? this.generateList() : _react2.default.createElement(_Loader2.default, null)
+	      );
+	    }
+	  }, {
+	    key: 'generateList',
+	    value: function generateList() {
+	      return this.state.kataList.map(function (kata) {
+	        return _react2.default.createElement(_Detail2.default, { detail: kata, key: kata.id });
+	      });
+	    }
+	  }]);
+
+	  return Details;
+	}(_react2.default.Component);
+
+	exports.default = Details;
+
+/***/ },
+/* 214 */
+/***/ function(module, exports, __webpack_require__) {
+
+	
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var kataItem = {
+	  background: '#fff',
+	  border: '0.1rem solid #eee',
+	  color: '#999',
+	  padding: '1rem',
+	  margin: 'auto',
+	  width: '80%'
+	};
+
+	function Detail(props) {
+	  return _react2.default.createElement(
+	    'div',
+	    { style: kataItem },
+	    _react2.default.createElement(
+	      'h2',
+	      null,
+	      props.detail.name
+	    ),
+	    _react2.default.createElement(
+	      'h3',
+	      null,
+	      'Description'
+	    ),
+	    _react2.default.createElement(
+	      'p',
+	      null,
+	      props.detail.description
+	    )
+	  );
+	}
+
+	exports.default = Detail;
 
 /***/ }
 /******/ ]);
