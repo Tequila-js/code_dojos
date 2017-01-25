@@ -40,32 +40,10 @@ function App (props) {
 ReactDOM.render((
   <Router history={browserHistory}>
     <Route path="/" component={App}>
-      <Route path="/katas" component={Katas}>
-        <Route path="/description/:kataName" component={Details}/>
-      </Route>
+      <Route path="/description/:kataName" component={Details}/>
+      <Route path="/katas" component={Katas}/>
       <Route path="/members" component={Members} />
 	  <Route path="*" component={NotFound}/>      
     </Route>
   </Router>
 ), document.getElementById('app-container'));
-
-/*
-
-
-{
-  let membersContainer = document.getElementById('members-container');
-  let katasContainer = document.getElementById('katas-container');
-  let detailContainer = document.getElementById('detail-container');
-
-  if (membersContainer) {
-    ReactDOM.render(<Members />, membersContainer);
-  }
-  if (katasContainer) {
-    ReactDOM.render(<Katas />, katasContainer);
-  }
-
-   if (detailContainer) {
-    ReactDOM.render(<Details />, detailContainer);
-  }
-}
-*/

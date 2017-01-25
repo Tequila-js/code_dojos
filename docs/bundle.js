@@ -71,100 +71,76 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function NotFound() {
-			return _react2.default.createElement(
-					'h1',
-					null,
-					'Not found'
-			);
+		return _react2.default.createElement(
+			'h1',
+			null,
+			'Not found'
+		);
 	}
 
 	function App(props) {
-			return _react2.default.createElement(
-					'main',
-					null,
+		return _react2.default.createElement(
+			'main',
+			null,
+			_react2.default.createElement(
+				'header',
+				null,
+				_react2.default.createElement(
+					'nav',
+					{ className: 'pure-g wrap-container' },
 					_react2.default.createElement(
-							'header',
-							null,
-							_react2.default.createElement(
-									'nav',
-									{ className: 'pure-g wrap-container' },
-									_react2.default.createElement(
-											'div',
-											{ className: 'pure-u-8-24' },
-											_react2.default.createElement(
-													'a',
-													{ href: '/', className: 'brand-item' },
-													'Coding Dojos'
-											)
-									),
-									_react2.default.createElement(
-											'div',
-											{ className: 'pure-u-16-24' },
-											_react2.default.createElement(
-													'ul',
-													{ className: 'pure-g navigation-list' },
-													_react2.default.createElement(
-															'li',
-															{ className: 'pure-u-3-24 navigation-item' },
-															_react2.default.createElement(
-																	_reactRouter.Link,
-																	{ to: '/katas' },
-																	'Katas'
-															)
-													),
-													_react2.default.createElement(
-															'li',
-															{ className: 'pure-u-3-24 navigation-item' },
-															_react2.default.createElement(
-																	_reactRouter.Link,
-																	{ to: '/members' },
-																	'Members'
-															)
-													)
-											)
-									)
-							)
+						'div',
+						{ className: 'pure-u-8-24' },
+						_react2.default.createElement(
+							'a',
+							{ href: '/', className: 'brand-item' },
+							'Coding Dojos'
+						)
 					),
-					props.children
-			);
+					_react2.default.createElement(
+						'div',
+						{ className: 'pure-u-16-24' },
+						_react2.default.createElement(
+							'ul',
+							{ className: 'pure-g navigation-list' },
+							_react2.default.createElement(
+								'li',
+								{ className: 'pure-u-3-24 navigation-item' },
+								_react2.default.createElement(
+									_reactRouter.Link,
+									{ to: '/katas' },
+									'Katas'
+								)
+							),
+							_react2.default.createElement(
+								'li',
+								{ className: 'pure-u-3-24 navigation-item' },
+								_react2.default.createElement(
+									_reactRouter.Link,
+									{ to: '/members' },
+									'Members'
+								)
+							)
+						)
+					)
+				)
+			),
+			props.children
+		);
 	}
 
 	_reactDom2.default.render(_react2.default.createElement(
-			_reactRouter.Router,
-			{ history: _reactRouter.browserHistory },
-			_react2.default.createElement(
-					_reactRouter.Route,
-					{ path: '/', component: App },
-					_react2.default.createElement(
-							_reactRouter.Route,
-							{ path: '/katas', component: _Katas2.default },
-							_react2.default.createElement(_reactRouter.Route, { path: '/description/:kataName', component: _Details2.default })
-					),
-					_react2.default.createElement(_reactRouter.Route, { path: '/members', component: _Members2.default }),
-					_react2.default.createElement(_reactRouter.Route, { path: '*', component: NotFound })
-			)
+		_reactRouter.Router,
+		{ history: _reactRouter.browserHistory },
+		_react2.default.createElement(
+			_reactRouter.Route,
+			{ path: '/', component: App },
+			_react2.default.createElement(_reactRouter.Route, { path: '/description/:kataName', component: _Details2.default }),
+			_react2.default.createElement(_reactRouter.Route, { path: '/katas', component: _Katas2.default }),
+			_react2.default.createElement(_reactRouter.Route, { path: '/members', component: _Members2.default }),
+			_react2.default.createElement(_reactRouter.Route, { path: '*', component: NotFound })
+		)
 	), document.getElementById('app-container'));
-
-	/*
-
-
-	{
-	  let membersContainer = document.getElementById('members-container');
-	  let katasContainer = document.getElementById('katas-container');
-	  let detailContainer = document.getElementById('detail-container');
-
-	  if (membersContainer) {
-	    ReactDOM.render(<Members />, membersContainer);
-	  }
-	  if (katasContainer) {
-	    ReactDOM.render(<Katas />, katasContainer);
-	  }
-
-	   if (detailContainer) {
-	    ReactDOM.render(<Details />, detailContainer);
-	  }
-	}
-	*/
 
 /***/ },
 /* 1 */
