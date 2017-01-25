@@ -1,4 +1,5 @@
 import React from 'react';
+import {Router, Route, Link, browserHistory} from 'react-router';
 
 const kataItem = {
   background: '#fff',
@@ -13,7 +14,7 @@ const kataItem = {
 function Kata(props) {
   return (
     <li style={kataItem}>
-      <a href={`detail.html?name=${props.kata.name}`}>{props.kata.name}</a>
+      <Link to={`description/${props.kata.name}`}>{props.kata.name}</Link>
     </li>
   )
 }

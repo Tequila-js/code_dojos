@@ -30,8 +30,11 @@ export default class Katas extends React.Component {
   render() {
     return (
       <section>
-        <h1>Katas</h1>
-        {this.state.katas.length? this.state.katas: <Loader/>}
+        <div>
+          <h1>Katas</h1>
+          {this.state.katas.length? this.state.katas: <Loader/>}
+        </div>
+        {this.props.children}
       </section>
     )
   }
