@@ -19,18 +19,13 @@ export default class Details extends React.Component {
     this.state = {kataList: ''};
   }
 
-  componentDidMount() {
-    location.search
-      .replace('?', '')
-      .split('&')
-      .forEach(item => {
-        let tempArray = item.split('='),
-        [name, value] = [tempArray[0], tempArray[1]];
+  componentDidMount() {    
+    let kataName = this.props.location.pathname
+                    .replace('description/', '');
 
-        if (name === 'name' && value) {
-          this.getKataDetail(value);
-        }   
-      });
+    if (kataName) {
+      this.getKataDetail(kataName);
+    }
   }
 
   getKataDetail(nameKata = '') {
