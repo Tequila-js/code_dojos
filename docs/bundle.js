@@ -72,6 +72,10 @@
 	
 	var _Details2 = _interopRequireDefault(_Details);
 	
+	var _NotFoundPage = __webpack_require__(502);
+	
+	var _NotFoundPage2 = _interopRequireDefault(_NotFoundPage);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function NotFound() {
@@ -100,7 +104,7 @@
 			_react2.default.createElement(_reactRouter.Route, { path: '/description/:kataName', component: _Details2.default }),
 			_react2.default.createElement(_reactRouter.Route, { path: '/katas', component: _Katas2.default }),
 			_react2.default.createElement(_reactRouter.Route, { path: '/members', component: _Members2.default }),
-			_react2.default.createElement(_reactRouter.Route, { path: '*', component: NotFound })
+			_react2.default.createElement(_reactRouter.Route, { path: '*', component: _NotFoundPage2.default })
 		)
 	), document.getElementById('app-container'));
 
@@ -397,15 +401,8 @@
 /* 4 */
 /***/ function(module, exports) {
 
-	/*
-	object-assign
-	(c) Sindre Sorhus
-	@license MIT
-	*/
-	
 	'use strict';
 	/* eslint-disable no-unused-vars */
-	var getOwnPropertySymbols = Object.getOwnPropertySymbols;
 	var hasOwnProperty = Object.prototype.hasOwnProperty;
 	var propIsEnumerable = Object.prototype.propertyIsEnumerable;
 	
@@ -426,7 +423,7 @@
 			// Detect buggy property enumeration order in older V8 versions.
 	
 			// https://bugs.chromium.org/p/v8/issues/detail?id=4118
-			var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
+			var test1 = new String('abc');  // eslint-disable-line
 			test1[5] = 'de';
 			if (Object.getOwnPropertyNames(test1)[0] === '5') {
 				return false;
@@ -455,7 +452,7 @@
 			}
 	
 			return true;
-		} catch (err) {
+		} catch (e) {
 			// We don't expect any of the above to throw, but better to be safe.
 			return false;
 		}
@@ -475,8 +472,8 @@
 				}
 			}
 	
-			if (getOwnPropertySymbols) {
-				symbols = getOwnPropertySymbols(from);
+			if (Object.getOwnPropertySymbols) {
+				symbols = Object.getOwnPropertySymbols(from);
 				for (var i = 0; i < symbols.length; i++) {
 					if (propIsEnumerable.call(from, symbols[i])) {
 						to[symbols[i]] = from[symbols[i]];
@@ -6556,15 +6553,8 @@
 /* 50 */
 /***/ function(module, exports) {
 
-	/*
-	object-assign
-	(c) Sindre Sorhus
-	@license MIT
-	*/
-	
 	'use strict';
 	/* eslint-disable no-unused-vars */
-	var getOwnPropertySymbols = Object.getOwnPropertySymbols;
 	var hasOwnProperty = Object.prototype.hasOwnProperty;
 	var propIsEnumerable = Object.prototype.propertyIsEnumerable;
 	
@@ -6585,7 +6575,7 @@
 			// Detect buggy property enumeration order in older V8 versions.
 	
 			// https://bugs.chromium.org/p/v8/issues/detail?id=4118
-			var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
+			var test1 = new String('abc');  // eslint-disable-line
 			test1[5] = 'de';
 			if (Object.getOwnPropertyNames(test1)[0] === '5') {
 				return false;
@@ -6614,7 +6604,7 @@
 			}
 	
 			return true;
-		} catch (err) {
+		} catch (e) {
 			// We don't expect any of the above to throw, but better to be safe.
 			return false;
 		}
@@ -6634,8 +6624,8 @@
 				}
 			}
 	
-			if (getOwnPropertySymbols) {
-				symbols = getOwnPropertySymbols(from);
+			if (Object.getOwnPropertySymbols) {
+				symbols = Object.getOwnPropertySymbols(from);
 				for (var i = 0; i < symbols.length; i++) {
 					if (propIsEnumerable.call(from, symbols[i])) {
 						to[symbols[i]] = from[symbols[i]];
@@ -24971,11 +24961,11 @@
 		return value;
 	}
 	
-	function keysSorter(input) {
+	function sorter(input) {
 		if (Array.isArray(input)) {
 			return input.sort();
 		} else if (typeof input === 'object') {
-			return keysSorter(Object.keys(input)).sort(function (a, b) {
+			return sorter(Object.keys(input)).sort(function (a, b) {
 				return Number(a) - Number(b);
 			}).map(function (key) {
 				return input[key];
@@ -25023,12 +25013,10 @@
 		});
 	
 		return Object.keys(ret).sort().reduce(function (result, key) {
-			var val = ret[key];
-			if (Boolean(val) && typeof val === 'object' && !Array.isArray(val)) {
-				// Sort object keys, not values
-				result[key] = keysSorter(val);
+			if (Boolean(ret[key]) && typeof ret[key] === 'object') {
+				result[key] = sorter(ret[key]);
 			} else {
-				result[key] = val;
+				result[key] = ret[key];
 			}
 	
 			return result;
@@ -25094,15 +25082,8 @@
 /* 214 */
 /***/ function(module, exports) {
 
-	/*
-	object-assign
-	(c) Sindre Sorhus
-	@license MIT
-	*/
-	
 	'use strict';
 	/* eslint-disable no-unused-vars */
-	var getOwnPropertySymbols = Object.getOwnPropertySymbols;
 	var hasOwnProperty = Object.prototype.hasOwnProperty;
 	var propIsEnumerable = Object.prototype.propertyIsEnumerable;
 	
@@ -25123,7 +25104,7 @@
 			// Detect buggy property enumeration order in older V8 versions.
 	
 			// https://bugs.chromium.org/p/v8/issues/detail?id=4118
-			var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
+			var test1 = new String('abc');  // eslint-disable-line
 			test1[5] = 'de';
 			if (Object.getOwnPropertyNames(test1)[0] === '5') {
 				return false;
@@ -25152,7 +25133,7 @@
 			}
 	
 			return true;
-		} catch (err) {
+		} catch (e) {
 			// We don't expect any of the above to throw, but better to be safe.
 			return false;
 		}
@@ -25172,8 +25153,8 @@
 				}
 			}
 	
-			if (getOwnPropertySymbols) {
-				symbols = getOwnPropertySymbols(from);
+			if (Object.getOwnPropertySymbols) {
+				symbols = Object.getOwnPropertySymbols(from);
 				for (var i = 0; i < symbols.length; i++) {
 					if (propIsEnumerable.call(from, symbols[i])) {
 						to[symbols[i]] = from[symbols[i]];
@@ -46136,6 +46117,65 @@
 	}
 	
 	exports.default = Detail;
+
+/***/ },
+/* 502 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var NotFoundPage = function (_Component) {
+	  _inherits(NotFoundPage, _Component);
+	
+	  function NotFoundPage() {
+	    _classCallCheck(this, NotFoundPage);
+	
+	    return _possibleConstructorReturn(this, (NotFoundPage.__proto__ || Object.getPrototypeOf(NotFoundPage)).apply(this, arguments));
+	  }
+	
+	  _createClass(NotFoundPage, [{
+	    key: 'render',
+	    value: function render() {
+	      var title = 'Page Not Found';
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'h1',
+	          null,
+	          title
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          'Sorry, but the page you were trying to view does not exist.'
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return NotFoundPage;
+	}(_react.Component);
+	
+	exports.default = NotFoundPage;
 
 /***/ }
 /******/ ]);
