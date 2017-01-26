@@ -16,7 +16,12 @@ gulp.task('watch-html', function () {
 
 gulp.task('process-js', function () {
   return gulp.src('app/js/main.js')
-            .pipe(plumber())
+            .pipe(plumber({
+              errorHandler: function (err) {
+                console.log(err);
+                this.emit('end');
+              }
+            }))
             .pipe(webpack( require('./webpack.config.js') ))
             .pipe(gulp.dest('./docs'))
             .pipe(gulpIf(argv.env === 'dev', livereload()));
@@ -24,7 +29,12 @@ gulp.task('process-js', function () {
 
 gulp.task('process-sass', function () {
   return gulp.src('./app/scss/main.scss')
-              .pipe(plumber())
+              .pipe(plumber({
+                errorHandler: function (err) {
+                  console.log(err);
+                  this.emit('end');
+                }
+              }))
               .pipe(sass({
                 style: "nested",
                 noCache: true
@@ -45,5 +55,6 @@ gulp.task('watch', function () {
 
   gulp.watch(['./docs/*.html'], ['watch-html']);
   gulp.watch(['./app/scss/*.scss', './app/scss/**/*.scss'], ['process-sass']);
-  gulp.watch(['./app/js/*.js', './app/js/**/*.js'], ['process-js']);
+  gulp.watch(['./app/js/*.jsx', './app/js/**/*.jsx', './app/js/**/**/*.jsx',
+              './app/js/*.js', './app/js/**/*.js', './app/js/**/**/*.js'], ['process-js']);
 });

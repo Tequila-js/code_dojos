@@ -7,6 +7,7 @@ module.exports = {
     path: path.join(__dirname, './docs'),
     filename: 'bundle.js'
   },
+  devtool: 'source-map',
   module: {
     loaders: [{
       test: /\.js(x)?$/,
