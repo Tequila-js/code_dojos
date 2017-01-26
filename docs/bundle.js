@@ -78,34 +78,26 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	function NotFound() {
-		return _react2.default.createElement(
-			'h1',
-			null,
-			'Not found'
-		);
-	}
-	
 	function App(props) {
-		return _react2.default.createElement(
-			'main',
-			null,
-			_react2.default.createElement(_Header2.default, null),
-			props.children
-		);
+	  return _react2.default.createElement(
+	    'main',
+	    null,
+	    _react2.default.createElement(_Header2.default, null),
+	    props.children
+	  );
 	}
 	
 	_reactDom2.default.render(_react2.default.createElement(
-		_reactRouter.Router,
-		{ history: _reactRouter.browserHistory },
-		_react2.default.createElement(
-			_reactRouter.Route,
-			{ path: '/', component: App },
-			_react2.default.createElement(_reactRouter.Route, { path: '/description/:kataName', component: _Details2.default }),
-			_react2.default.createElement(_reactRouter.Route, { path: '/katas', component: _Katas2.default }),
-			_react2.default.createElement(_reactRouter.Route, { path: '/members', component: _Members2.default }),
-			_react2.default.createElement(_reactRouter.Route, { path: '*', component: _NotFoundPage2.default })
-		)
+	  _reactRouter.Router,
+	  { history: _reactRouter.hashHistory },
+	  _react2.default.createElement(
+	    _reactRouter.Route,
+	    { path: '/', component: App },
+	    _react2.default.createElement(_reactRouter.Route, { path: '/description/:kataName', component: _Details2.default }),
+	    _react2.default.createElement(_reactRouter.Route, { path: '/katas', component: _Katas2.default }),
+	    _react2.default.createElement(_reactRouter.Route, { path: '/members', component: _Members2.default }),
+	    _react2.default.createElement(_reactRouter.Route, { path: '*', component: _NotFoundPage2.default })
+	  )
 	), document.getElementById('app-container'));
 
 /***/ },
@@ -46142,6 +46134,16 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
+	var pageNotFound = {
+	  background: '#fff',
+	  border: '0.1rem solid #eee',
+	  color: '#999',
+	  padding: '1rem',
+	  margin: '5rem auto auto auto',
+	  width: '80%',
+	  textAlign: 'center'
+	};
+	
 	var NotFoundPage = function (_Component) {
 	  _inherits(NotFoundPage, _Component);
 	
@@ -46157,7 +46159,7 @@
 	      var title = 'Page Not Found';
 	      return _react2.default.createElement(
 	        'div',
-	        null,
+	        { style: pageNotFound },
 	        _react2.default.createElement(
 	          'h1',
 	          null,
