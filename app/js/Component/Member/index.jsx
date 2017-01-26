@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+
 import {GridList, GridTile} from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
@@ -20,11 +21,9 @@ export default class Member extends React.Component {
   render() {
     return (
       <GridTile
-        title={this.props.title}
-        actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
+        title={this.props.title}}
         actionPosition="left" titlePosition="top"
-        titleBackground="linear-gradient(to bottom, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0) 100%)"
-      cols={2} rows={2}>
+      titleBackground="linear-gradient(to bottom, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0) 100%)">
         <img src={this.props.img} />
       </GridTile>
     )

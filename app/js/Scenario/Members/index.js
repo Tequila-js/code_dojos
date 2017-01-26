@@ -1,6 +1,7 @@
 'use strict'
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Axios from 'axios';
 
 import {GridList} from 'material-ui/GridList';
@@ -10,13 +11,15 @@ import Header from '../../Component/Header';
 import Loader from '../../Component/Loader';
 import Member from '../../component/Member';
 
-const tequilaTeamMembers = 'https://api.github.com/orgs/Tequila-js/members';
+const timer = 30,
+      tequilaTeamMembers = 'https://api.github.com/orgs/Tequila-js/members';
 
 export default class Members extends React.Component {
   constructor() {
     super();
     this.state = {
-      members: []
+      members: [],
+      cols: 3
     };
   }
 
@@ -27,12 +30,23 @@ export default class Members extends React.Component {
   }
 
   componentDidMount() {
+    let self = this,
+        resizeTimer = null;
+
+    this.getGridCols();
+
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+
+      resizeTimer = setTimeout(self.getGridCols.bind(self), timer);
+    })
+
     Axios(tequilaTeamMembers)
       .then(response => {
         this.setState({members: response.data});
       })
       .catch(e => {
-        console.log(`Something goes wrong ${e}`, 'color: red');
+        console.log(`%cSomething goes wrong ${e}`, 'color: red');
       });
   }
 
@@ -55,17 +69,30 @@ export default class Members extends React.Component {
         flexWrap: 'wrap',
         justifyContent: 'space-around',
       }}>
-        <GridList style={{
-          width: 500,
-          height: 450,
+        <GridList
+          cols={this.state.cols}
+          style={{
+          width: '100%',
           overflowY: 'auto',
         }}>
         {
-          this.state.members.map((item, index) => <Member key={index} title={item.login} url={item.html_url} img={item.avatar_url}/>)
+          this.state.members.map((item, index) => <Member key={index} title={item.login} url={item.html_url} img={item.avatar_url} />)
         }
         </GridList>
       </section>
     )
+  }
+
+  getGridCols() {
+    let width = window.innerWidth;
+
+    if (width < 600) {
+      this.setState({cols:2});
+    } else if (width < 1000) {
+      this.setState({cols:3});
+    } else {
+      this.setState({cols:4});
+    }
   }
 }
 
