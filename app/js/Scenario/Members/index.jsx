@@ -7,7 +7,6 @@ import Axios from 'axios';
 import {GridList} from 'material-ui/GridList';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
-//import Header from '../../Component/Header';
 import Loader from '../../Component/Loader';
 import Member from '../../component/Member';
 

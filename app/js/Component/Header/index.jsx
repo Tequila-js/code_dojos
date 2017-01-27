@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Router, Route, Link, browserHistory} from 'react-router'
+import {Router, Route, Link} from 'react-router'
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -18,10 +18,18 @@ const Menu = (props) => (
     targetOrigin={{horizontal: 'right', vertical: 'top'}}
   anchorOrigin={{horizontal: 'right', vertical: 'top'}}>
     <MenuItem>
-      <Link to="/katas">Katas</Link>
+      <Link style={{
+        padding: '0 16px',
+        display: 'block'
+      }}
+      to="/katas">Katas</Link>
     </MenuItem>
     <MenuItem>
-			<Link to="/members">Members</Link>
+			<Link style={{
+        padding: '0 16px',
+        display: 'block'
+      }}
+      to="/members">Members</Link>
 		</MenuItem>
   </IconMenu>
 );
