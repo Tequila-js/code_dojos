@@ -1,5 +1,6 @@
 const path = require('path'),
-      webpack = require('webpack');
+      webpack = require('webpack'),
+      NyanProgressPlugin = require('nyan-progress-webpack-plugin');;
 
 module.exports = {
   entry: './app/js/main.js',
@@ -24,4 +25,7 @@ module.exports = {
   resolve: {
     extensions: ['.jsx', '.js', '']
   },
+  plugins: [
+    new NyanProgressPlugin()
+  ]
 }
