@@ -2,16 +2,13 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Router, Route, Link, browserHistory} from 'react-router';
+import {Router, Route, Link, hashHistory } from 'react-router';
 
 import Header from './Component/Header';
 import Members from './Scenario/Members';
 import Katas from './Scenario/Katas'
 import Details from './Scenario/Details'
-
-function NotFound () {
-	return <h1>Not found</h1>;
-}
+import NotFoundPage from './Component/NotFoundPage';
 
 function App (props) {
 	return (
@@ -23,12 +20,12 @@ function App (props) {
 }
 
 ReactDOM.render((
-  <Router history={browserHistory}>
-    <Route path="/" component={App}>
-      <Route path="/description/:kataName" component={Details}/>
-      <Route path="/katas" component={Katas}/>
-      <Route path="/members" component={Members} />
-	  <Route path="*" component={NotFound}/>
-    </Route>
+  <Router history={hashHistory}>
+    	<Route path="/" component={App}>
+      		<Route path="/description/:kataName" component={Details}/>
+      		<Route path="/katas" component={Katas}/>
+      		<Route path="/members" component={Members} />
+	  		<Route path="*" component={NotFoundPage}/>
+    	</Route>
   </Router>
 ), document.getElementById('app-container'));
