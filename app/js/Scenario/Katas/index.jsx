@@ -47,10 +47,17 @@ export default class Katas extends React.Component {
     return (
       <section>
       {
-        this.state.katas.map((item, index) => <Kata key={index} name={item.name} />)
+        this.state.katas.map((item, index) => <Kata key={index} name={item.name} description={this.formatDescription(item.description)}/>)
       }
       </section>
     );
+  }
+
+  formatDescription(description = '') {
+    if (!description) {
+      return 'Not Available';
+    }
+    return description.length < 170? description: description.substring(0, 170) + '...';
   }
 }
 

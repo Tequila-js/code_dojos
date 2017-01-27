@@ -45930,13 +45930,25 @@
 	  }, {
 	    key: 'generateKataList',
 	    value: function generateKataList() {
+	      var _this3 = this;
+	
 	      return _react2.default.createElement(
 	        'section',
 	        null,
 	        this.state.katas.map(function (item, index) {
-	          return _react2.default.createElement(_Kata2.default, { key: index, name: item.name });
+	          return _react2.default.createElement(_Kata2.default, { key: index, name: item.name, description: _this3.formatDescription(item.description) });
 	        })
 	      );
+	    }
+	  }, {
+	    key: 'formatDescription',
+	    value: function formatDescription() {
+	      var description = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+	
+	      if (!description) {
+	        return 'Not Available';
+	      }
+	      return description.length < 170 ? description : description.substring(0, 170) + '...';
 	    }
 	  }]);
 	
@@ -46008,10 +46020,14 @@
 	      return _react2.default.createElement(
 	        _Card.Card,
 	        null,
-	        _react2.default.createElement(_Card.CardHeader, {
-	          title: this.props.name,
-	          actAsExpander: true,
-	          showExpandableButton: false }),
+	        _react2.default.createElement(_Card.CardTitle, { title: this.props.name }),
+	        _react2.default.createElement(
+	          _Card.CardText,
+	          { expandable: false },
+	          ' ',
+	          this.props.description,
+	          ' '
+	        ),
 	        _react2.default.createElement(
 	          _Card.CardActions,
 	          null,
