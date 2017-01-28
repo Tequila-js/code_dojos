@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Router, Route, Link, browserHistory} from 'react-router';
 
-import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
+import {Card, CardActions, CardTitle, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
@@ -15,10 +15,8 @@ class Kata extends Component {
   render() {
     return (
       <Card>
-        <CardHeader
-          title={this.props.name}
-          actAsExpander={true}
-        showExpandableButton={false} />
+        <CardTitle title={this.props.name} />
+        <CardText expandable={false}> {this.props.description} </CardText>
         <CardActions>
           <FlatButton>
             <Link
