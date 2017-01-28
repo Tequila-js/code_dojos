@@ -2,56 +2,91 @@
 
 import React from 'react'
 import Axios from 'axios';
+import marked from 'marked';
+
+import {Link} from 'react-router';
+import FlatButton from 'material-ui/FlatButton';
+import {Card, CardActions, CardTitle, CardText} from 'material-ui/Card';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 import Loader from '../../Component/Loader';
 import Detail from '../../Component/Detail';
 
-const kataElementStyle = {
-  background: '#fff',
-  padding: '1rem',
-  margin: 'auto',
-  width: '80%'
-};
+
+const url = 'https://api.github.com/repos/Tequila-js';
 
 export default class Details extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {kataList: ''};
+    this.state = {
+      content: '',
+      kata: {}
+    };
   }
 
-  componentDidMount() {    
+  getChildContext() {
+    return {
+      muiTheme: getMuiTheme(getMuiTheme)
+    };
+  }
+
+  componentDidMount() {
     let kataName = this.props.location.pathname
-                    .replace('description/', '');
+                       .replace('/description/', '');
 
-    if (kataName) {
-      this.getKataDetail(kataName);
-    }
+    this.retrieveProjectInfo(kataName);
+    this.retrieveDescription(kataName);
   }
 
-  getKataDetail(nameKata = '') {
-    Axios.get('https://api.github.com/orgs/Tequila-js/repos')
+  retrieveProjectInfo(repo = '') {
+    Axios.get(`${url}/${repo}`)
       .then(response => {
-        let katas = response.data
-            .filter(kata => kata.name == nameKata);
+        let data = response.data,
+            kata = {};
 
-        this.setState({kataList: katas});
+        [kata.url] = [data.html_url];
+
+        this.setState(kata);
+      });
+  }
+
+  retrieveDescription(repo = '') {
+    Axios.get(`${url}/${repo}/contents/README.md`)
+      .then(response => {
+        this.setState({
+          content: atob(response.data.content.replace(/↵/g, ''))
+        });
       });
   }
 
   render() {
     return (
-      <section>
-        <div style={kataElementStyle}>
-          <h1>Details</h1>
-        </div> 
+      <section className="wrap-container">
         {
-          this.state.kataList.length? this.generateList(): <Loader/>
+          this.state.content? this.generateContent(): <Loader/>
         }
       </section>
     );
   }
 
-  generateList() {
-    return this.state.kataList.map(kata => <Detail detail={kata} key={kata.id} />);
+  generateContent() {
+    return (
+      <Card>
+        <CardText expandable={false}>
+          <div dangerouslySetInnerHTML={{__html:marked(this.state.content)}} />
+        </CardText>
+        <CardActions>
+          <FlatButton primary={true}>
+            <Link to={`/katas`}>RETURN</Link>
+          </FlatButton>
+          <FlatButton label="Visit Repo" primary={true} href={this.state.kata.url}>
+          </FlatButton>
+        </CardActions>
+      </Card>
+    );
   }
+}
+
+Details.childContextTypes = {
+  muiTheme: React.PropTypes.object
 }
