@@ -31,11 +31,11 @@ export default class Details extends React.Component {
   }
 
   componentDidMount() {
-    let kataName = this.props.location.pathname
-                       .replace('/description/', '');
+    let kataArray= this.props.location.pathname.split('/'),
+        kata = kataArray[kataArray.length - 1];
 
-    this.retrieveProjectInfo(kataName);
-    this.retrieveDescription(kataName);
+    this.retrieveProjectInfo(kata);
+    this.retrieveDescription(kata);
   }
 
   retrieveProjectInfo(repo = '') {
@@ -44,7 +44,7 @@ export default class Details extends React.Component {
         let data = response.data,
             kata = {};
 
-        [kata.url] = [data.html_url];
+        kata.url = data.html_url;
 
         this.setState(kata);
       });
