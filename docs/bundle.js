@@ -48084,10 +48084,11 @@
 	  }, {
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      var kataName = this.props.location.pathname.replace('/description/', '');
+	      var kataArray = this.props.location.pathname.split('/'),
+	          kata = kataArray[kataArray.length - 1];
 	
-	      this.retrieveProjectInfo(kataName);
-	      this.retrieveDescription(kataName);
+	      this.retrieveProjectInfo(kata);
+	      this.retrieveDescription(kata);
 	    }
 	  }, {
 	    key: 'retrieveProjectInfo',
@@ -48100,9 +48101,7 @@
 	        var data = response.data,
 	            kata = {};
 	
-	        var _ref = [data.html_url];
-	        kata.url = _ref[0];
-	
+	        kata.url = data.html_url;
 	
 	        _this2.setState(kata);
 	      });
